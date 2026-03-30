@@ -3,6 +3,23 @@ import { useRef } from "react";
 import { useCountUp } from "@/hooks/useCountUp";
 import { MapPin, Briefcase, TrendingUp } from "lucide-react";
 
+const StatCard = ({ label, value, suffix = "", isYear = false, delay, isInView }: { label: string; value: number; suffix?: string; isYear?: boolean; delay: number; isInView: boolean }) => {
+  const count = useCountUp(value, isYear ? 1 : 2000, isInView);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay }}
+      className="holo-card p-6 rounded-lg bg-surface-elevated border border-divider text-center"
+    >
+      <p className="font-display text-2xl md:text-3xl font-bold text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]">
+        {isYear ? value : count}{suffix}
+      </p>
+      <p className="text-sm text-muted-foreground mt-2">{label}</p>
+    </motion.div>
+  );
+};
+
 const cardData = [
   {
     icon: Briefcase,

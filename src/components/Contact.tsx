@@ -8,7 +8,10 @@ const Contact = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="section-padding" ref={ref}>
+    <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,35 +19,65 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <motion.p
+            className="text-sm font-medium tracking-widest uppercase text-primary mb-3"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5 }}
+          >
             Get in Touch
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          </motion.p>
+          <motion.h2
+            className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Let's connect
-          </h2>
-          <p className="text-muted-foreground mb-8">
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Open to opportunities in product, growth, and experimentation roles. Let's discuss how I can help your team make smarter, data-driven decisions.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-            <Button asChild size="lg" className="font-medium w-full sm:w-auto">
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Button asChild size="lg" className="font-medium w-full sm:w-auto group">
               <a href="mailto:tonya@example.com">
-                <Mail size={16} className="mr-2" />
+                <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 Email Me
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto">
+            <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto group">
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Linkedin size={16} className="mr-2" />
+                <Linkedin size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 LinkedIn
               </a>
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-text-tertiary">
-            <MapPin size={14} />
+          <motion.div
+            className="flex items-center justify-center gap-2 text-sm text-text-tertiary"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <motion.div
+              animate={{ y: [0, -2, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <MapPin size={14} />
+            </motion.div>
             <span>Tampa, FL</span>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

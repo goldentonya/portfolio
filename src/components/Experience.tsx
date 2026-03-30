@@ -80,40 +80,62 @@ const Experience = () => {
           {timeline.map((entry, ei) => (
             <motion.div
               key={entry.company}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 * ei }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 * ei }}
             >
               <h3 className="font-display text-xl font-bold text-foreground mb-6">
                 {entry.company}
               </h3>
 
               <div className="relative border-l-2 border-divider pl-8 space-y-8">
-                {entry.roles.map((role) => (
-                  <div key={role.title} className="relative">
-                    {/* Timeline dot */}
-                    <div className="absolute -left-[2.55rem] top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background" />
+                {entry.roles.map((role, ri) => (
+                  <motion.div
+                    key={role.title}
+                    className="relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 * ei + 0.1 * ri }}
+                  >
+                    {/* Animated timeline dot */}
+                    <motion.div
+                      className="absolute -left-[2.55rem] top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background"
+                      initial={{ scale: 0 }}
+                      animate={isInView ? { scale: 1 } : {}}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 15,
+                        delay: 0.3 * ei + 0.15 * ri,
+                      }}
+                    />
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
                       <h4 className="font-display font-semibold text-foreground">
                         {role.title}
                       </h4>
-                      <span className="text-xs font-medium text-primary bg-accent-soft px-2 py-0.5 rounded-full w-fit">
+                      <motion.span
+                        className="text-xs font-medium text-primary bg-accent-soft px-2 py-0.5 rounded-full w-fit"
+                        whileHover={{ scale: 1.1 }}
+                      >
                         {role.period}
-                      </span>
+                      </motion.span>
                     </div>
 
                     <ul className="space-y-1.5">
                       {role.bullets.map((bullet, bi) => (
-                        <li
+                        <motion.li
                           key={bi}
                           className="text-sm text-muted-foreground leading-relaxed"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={isInView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ duration: 0.3, delay: 0.3 * ei + 0.1 * ri + 0.05 * bi }}
                         >
                           {bullet}
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

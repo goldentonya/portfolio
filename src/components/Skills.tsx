@@ -31,19 +31,12 @@ const Skills = () => {
 
   const containerVariants = {
     hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.12 },
-    },
+    visible: { transition: { staggerChildren: 0.12 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
   return (
@@ -54,10 +47,10 @@ const Skills = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Expertise
+          <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+            ✦ Arsenal ✦
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-12 tracking-wide">
             Core competencies
           </h2>
         </motion.div>
@@ -69,19 +62,14 @@ const Skills = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {skillGroups.map((group) => (
-            <motion.div
-              key={group.title}
-              variants={itemVariants}
-              whileHover={{ y: -4 }}
-              className="group"
-            >
+            <motion.div key={group.title} variants={itemVariants} whileHover={{ y: -4 }} className="group">
               <motion.div
                 whileHover={{ rotate: 15, scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <group.icon size={20} className="text-primary mb-4 transition-colors" />
+                <group.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
               </motion.div>
-              <h3 className="font-display font-semibold text-foreground mb-4">
+              <h3 className="font-display font-semibold text-foreground mb-4 text-sm tracking-wide">
                 {group.title}
               </h3>
               <ul className="space-y-2">
@@ -93,10 +81,7 @@ const Skills = () => {
                     transition={{ duration: 0.3, delay: 0.5 + si * 0.08 }}
                     className="text-sm text-muted-foreground flex items-center gap-2 group-hover:text-foreground transition-colors duration-300"
                   >
-                    <motion.span
-                      className="w-1 h-1 rounded-full bg-primary shrink-0"
-                      whileHover={{ scale: 2 }}
-                    />
+                    <span className="w-1 h-1 rounded-full bg-primary shrink-0 shadow-[0_0_4px_hsl(199_90%_55%/0.6)]" />
                     {skill}
                   </motion.li>
                 ))}

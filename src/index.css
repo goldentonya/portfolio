@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,55 +6,56 @@
 
 @layer base {
   :root {
-    --background: 220 10% 14%;
-    --foreground: 0 0% 95%;
+    --background: 225 15% 8%;
+    --foreground: 210 20% 93%;
 
-    --card: 220 10% 17%;
-    --card-foreground: 0 0% 95%;
+    --card: 225 15% 11%;
+    --card-foreground: 210 20% 93%;
 
-    --popover: 220 10% 17%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 225 15% 11%;
+    --popover-foreground: 210 20% 93%;
 
-    --primary: 174 60% 50%;
-    --primary-foreground: 220 10% 14%;
+    --primary: 199 90% 55%;
+    --primary-foreground: 225 15% 8%;
 
-    --secondary: 220 10% 20%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 225 12% 16%;
+    --secondary-foreground: 210 20% 93%;
 
-    --muted: 220 10% 20%;
-    --muted-foreground: 220 5% 70%;
+    --muted: 225 12% 16%;
+    --muted-foreground: 215 10% 65%;
 
-    --accent: 174 60% 50%;
-    --accent-foreground: 220 10% 14%;
+    --accent: 199 90% 55%;
+    --accent-foreground: 225 15% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 22%;
-    --input: 220 10% 22%;
-    --ring: 174 60% 50%;
+    --border: 225 12% 18%;
+    --input: 225 12% 18%;
+    --ring: 199 90% 55%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --surface: 220 10% 16%;
-    --surface-elevated: 220 10% 19%;
-    --text-secondary: 220 5% 75%;
-    --text-tertiary: 220 5% 55%;
-    --accent-soft: 174 60% 15%;
-    --divider: 220 10% 22%;
+    --surface: 225 15% 10%;
+    --surface-elevated: 225 15% 13%;
+    --text-secondary: 215 10% 75%;
+    --text-tertiary: 215 10% 50%;
+    --accent-soft: 199 90% 12%;
+    --divider: 225 12% 18%;
+    --glow: 199 90% 55%;
 
-    --font-display: 'Space Grotesk', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 220 10% 15%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 174 60% 50%;
-    --sidebar-primary-foreground: 220 10% 14%;
-    --sidebar-accent: 220 10% 20%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 220 10% 22%;
-    --sidebar-ring: 174 60% 50%;
+    --sidebar-background: 225 15% 9%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 199 90% 55%;
+    --sidebar-primary-foreground: 225 15% 8%;
+    --sidebar-accent: 225 12% 16%;
+    --sidebar-accent-foreground: 210 20% 93%;
+    --sidebar-border: 225 12% 18%;
+    --sidebar-ring: 199 90% 55%;
   }
 }
 
@@ -70,6 +71,94 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+/* Starfield background */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, hsl(199 90% 80% / 0.6), transparent),
+    radial-gradient(1px 1px at 30% 65%, hsl(199 90% 80% / 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 50% 10%, hsl(199 90% 80% / 0.7), transparent),
+    radial-gradient(1px 1px at 70% 40%, hsl(199 90% 80% / 0.3), transparent),
+    radial-gradient(1px 1px at 85% 75%, hsl(199 90% 80% / 0.5), transparent),
+    radial-gradient(1px 1px at 15% 85%, hsl(199 90% 80% / 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 60% 55%, hsl(199 90% 80% / 0.5), transparent),
+    radial-gradient(1px 1px at 90% 15%, hsl(199 90% 80% / 0.6), transparent),
+    radial-gradient(1px 1px at 40% 90%, hsl(199 90% 80% / 0.3), transparent),
+    radial-gradient(1px 1px at 5% 50%, hsl(199 90% 80% / 0.5), transparent);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.starfield::after {
+  background-image:
+    radial-gradient(1px 1px at 22% 33%, hsl(199 90% 80% / 0.5), transparent),
+    radial-gradient(1px 1px at 44% 78%, hsl(199 90% 80% / 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 66% 22%, hsl(199 90% 80% / 0.6), transparent),
+    radial-gradient(1px 1px at 88% 55%, hsl(199 90% 80% / 0.4), transparent),
+    radial-gradient(1px 1px at 11% 67%, hsl(199 90% 80% / 0.5), transparent),
+    radial-gradient(1px 1px at 33% 11%, hsl(199 90% 80% / 0.3), transparent),
+    radial-gradient(1px 1px at 77% 88%, hsl(199 90% 80% / 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 55% 44%, hsl(199 90% 80% / 0.5), transparent);
+  animation-delay: 2s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Lightsaber divider */
+.lightsaber-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--primary) / 0.2) 15%,
+    hsl(var(--primary)) 50%,
+    hsl(var(--primary) / 0.2) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.2);
+}
+
+/* Holographic card glow */
+.holo-card {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.15),
+    transparent 40%,
+    transparent 60%,
+    hsl(var(--primary) / 0.1)
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.holo-card:hover::before {
+  opacity: 1;
 }
 
 @layer components {

@@ -10,16 +10,27 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <CaseStudies />
-      <Certifications />
-      <Contact />
-      <Footer />
+    <div className="min-h-screen bg-background relative">
+      {/* Starfield background */}
+      <div className="starfield" />
+
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <div className="lightsaber-divider" />
+        <About />
+        <div className="lightsaber-divider" />
+        <Skills />
+        <div className="lightsaber-divider" />
+        <Experience />
+        <div className="lightsaber-divider" />
+        <CaseStudies />
+        <div className="lightsaber-divider" />
+        <Certifications />
+        <div className="lightsaber-divider" />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 };

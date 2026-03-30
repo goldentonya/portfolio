@@ -9,7 +9,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
       <div className="section-container">
@@ -20,15 +19,15 @@ const Contact = () => {
           className="max-w-2xl mx-auto text-center"
         >
           <motion.p
-            className="text-sm font-medium tracking-widest uppercase text-primary mb-3"
+            className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5 }}
           >
-            Get in Touch
+            ✦ Transmission ✦
           </motion.p>
           <motion.h2
-            className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4"
+            className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -50,13 +49,13 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Button asChild size="lg" className="font-medium w-full sm:w-auto group">
+            <Button asChild size="lg" className="font-medium w-full sm:w-auto group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
               <a href="mailto:tonya@example.com">
                 <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 Email Me
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto group">
+            <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto group border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(199_90%_55%/0.15)]">
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 LinkedIn
@@ -70,10 +69,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <motion.div
-              animate={{ y: [0, -2, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <motion.div animate={{ y: [0, -2, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               <MapPin size={14} />
             </motion.div>
             <span>Tampa, FL</span>

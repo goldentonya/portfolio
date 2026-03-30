@@ -61,17 +61,17 @@ const Experience = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="section-padding bg-surface" ref={ref}>
+    <section id="experience" className="section-padding bg-surface/80" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Career
+          <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+            ✦ Mission Log ✦
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-12 tracking-wide">
             Professional experience
           </h2>
         </motion.div>
@@ -84,11 +84,11 @@ const Experience = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 * ei }}
             >
-              <h3 className="font-display text-xl font-bold text-foreground mb-6">
+              <h3 className="font-display text-lg font-bold text-foreground mb-6 tracking-wide">
                 {entry.company}
               </h3>
 
-              <div className="relative border-l-2 border-divider pl-8 space-y-8">
+              <div className="relative border-l-2 border-primary/20 pl-8 space-y-8">
                 {entry.roles.map((role, ri) => (
                   <motion.div
                     key={role.title}
@@ -97,25 +97,19 @@ const Experience = () => {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 * ei + 0.1 * ri }}
                   >
-                    {/* Animated timeline dot */}
                     <motion.div
-                      className="absolute -left-[2.55rem] top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background"
+                      className="absolute -left-[2.55rem] top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background shadow-[0_0_8px_hsl(199_90%_55%/0.5)]"
                       initial={{ scale: 0 }}
                       animate={isInView ? { scale: 1 } : {}}
-                      transition={{
-                        type: "spring",
-                        stiffness: 500,
-                        damping: 15,
-                        delay: 0.3 * ei + 0.15 * ri,
-                      }}
+                      transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.3 * ei + 0.15 * ri }}
                     />
 
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
-                      <h4 className="font-display font-semibold text-foreground">
+                      <h4 className="font-display font-semibold text-foreground text-sm tracking-wide">
                         {role.title}
                       </h4>
                       <motion.span
-                        className="text-xs font-medium text-primary bg-accent-soft px-2 py-0.5 rounded-full w-fit"
+                        className="text-xs font-medium text-primary bg-accent-soft px-2 py-0.5 rounded-full w-fit border border-primary/20"
                         whileHover={{ scale: 1.1 }}
                       >
                         {role.period}

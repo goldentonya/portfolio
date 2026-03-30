@@ -7,17 +7,17 @@ const Certifications = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding bg-surface" ref={ref}>
+    <section className="section-padding bg-surface/80" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Credentials
+          <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+            ✦ Credentials ✦
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 tracking-wide">
             Certifications
           </h2>
         </motion.div>
@@ -28,19 +28,19 @@ const Certifications = () => {
           transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 200 }}
           whileHover={{
             y: -4,
-            boxShadow: "0 15px 30px -10px hsl(174 60% 50% / 0.15)",
-            borderColor: "hsl(174 60% 50% / 0.3)",
+            boxShadow: "0 0 25px hsl(199 90% 55% / 0.12)",
+            borderColor: "hsl(199 90% 55% / 0.4)",
           }}
-          className="inline-flex items-center gap-4 p-5 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
+          className="holo-card inline-flex items-center gap-4 p-5 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
         >
           <motion.div
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
           >
-            <Award size={24} className="text-primary" />
+            <Award size={24} className="text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]" />
           </motion.div>
           <div>
-            <h3 className="font-display font-semibold text-foreground">
+            <h3 className="font-display font-semibold text-foreground text-sm tracking-wide">
               Google Ads Search Certification
             </h3>
             <p className="text-sm text-muted-foreground">Google</p>

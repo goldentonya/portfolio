@@ -79,6 +79,12 @@ const About = () => {
         >
           Results-driven professional with experience designing and executing A/B experiments to optimize product performance and improve KPIs. Skilled in analyzing data, identifying actionable insights, and presenting findings to stakeholders. Proven ability to translate complex data into strategies that improve conversion rates and business performance.
         </motion.p>
+
+        <div className="grid grid-cols-3 gap-6 mt-10">
+          <StatCard label="Established in" value={2018} isYear delay={0.7} isInView={isInView} />
+          <StatCard label="Experiments Ran" value={100} suffix="+" delay={0.85} isInView={isInView} />
+          <StatCard label="Websites Optimized" value={10} suffix="+" delay={1.0} isInView={isInView} />
+        </div>
       </div>
     </section>
   );

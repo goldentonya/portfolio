@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useCountUp } from "@/hooks/useCountUp";
 import { MapPin, Briefcase, TrendingUp } from "lucide-react";
 
 const cardData = [

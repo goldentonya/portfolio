@@ -8,6 +8,7 @@ const roles = [
   "Technical Performance Strategist",
   "Growth & Experimentation Lead",
   "Conversion Optimization Expert",
+  "Data-Driven Decision Maker",
 ];
 
 const Hero = () => {
@@ -48,24 +49,24 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center relative pt-16 overflow-hidden">
       {/* Floating particles */}
-      {[...Array(5)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/30"
+          className="absolute w-0.5 h-0.5 rounded-full bg-primary/40"
           style={{
-            left: `${15 + i * 18}%`,
-            top: `${20 + (i % 3) * 25}%`,
+            left: `${10 + i * 12}%`,
+            top: `${15 + (i % 4) * 22}%`,
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.6, 0.2],
-            scale: [1, 1.5, 1],
+            y: [0, -40, 0],
+            opacity: [0.1, 0.7, 0.1],
+            scale: [1, 2, 1],
           }}
           transition={{
-            duration: 4 + i,
+            duration: 5 + i * 0.7,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.8,
+            delay: i * 0.6,
           }}
         />
       ))}
@@ -78,8 +79,8 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">
-                Growth & Experimentation
+              <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-4">
+                ✦ Growth & Experimentation ✦
               </p>
             </motion.div>
 
@@ -87,7 +88,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 tracking-wide"
             >
               Tonya Golden
             </motion.h1>
@@ -102,7 +103,7 @@ const Hero = () => {
               <motion.span
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                className="inline-block w-0.5 h-5 bg-primary ml-1 align-middle"
+                className="inline-block w-0.5 h-5 bg-primary ml-1 align-middle shadow-[0_0_8px_hsl(199_90%_55%/0.6)]"
               />
             </motion.div>
 
@@ -112,7 +113,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl"
             >
-              I help companies improve conversion, optimize user journeys, and make smarter product decisions through experimentation.
+              I help companies improve conversion, optimize user journeys, and make smarter product decisions through experimentation. The Force of data guides every decision.
             </motion.p>
 
             <motion.div
@@ -121,13 +122,13 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <Button asChild size="lg" className="font-medium group">
+              <Button asChild size="lg" className="font-medium group shadow-[0_0_15px_hsl(199_90%_55%/0.25)]">
                 <a href="#case-studies">
                   <ArrowDown size={16} className="mr-2 transition-transform group-hover:translate-y-1" />
                   View My Work
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="font-medium group">
+              <Button asChild variant="outline" size="lg" className="font-medium group border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(199_90%_55%/0.15)]">
                 <a href="#contact">
                   <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
                   Contact Me
@@ -144,15 +145,15 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
           >
-            <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
+            <div className="relative rounded-xl overflow-hidden shadow-[0_0_40px_hsl(199_90%_55%/0.15)] border border-primary/20">
               <img
                 src={heroImage}
-                alt="Data visualization, A/B testing dashboards, code, and experimentation workflows"
+                alt="Holographic data visualization dashboards floating in space"
                 width={1920}
                 height={800}
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-primary/5" />
             </div>
           </motion.div>
         </div>
@@ -164,13 +165,13 @@ const Hero = () => {
         animate={{ y: [0, 8, 0], opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ArrowDown size={20} className="text-primary" />
+        <ArrowDown size={20} className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.5)]" />
       </motion.div>
 
-      {/* Teal glow effects */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute -top-20 left-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-accent/8 rounded-full blur-[100px] -z-10" />
+      {/* Glow effects */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl -z-10" />
+      <div className="absolute -top-20 left-1/3 w-[500px] h-[500px] bg-primary/4 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -z-10" />
     </section>
   );
 };

@@ -25,17 +25,17 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="section-padding bg-surface" ref={ref}>
+    <section id="about" className="section-padding bg-surface/80" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            About
+          <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+            ✦ The Backstory ✦
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 tracking-wide">
             Bridging data, product, and growth
           </h2>
         </motion.div>
@@ -49,18 +49,18 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
               whileHover={{
                 y: -6,
-                boxShadow: "0 20px 40px -15px hsl(174 60% 50% / 0.15)",
-                borderColor: "hsl(174 60% 50% / 0.3)",
+                boxShadow: "0 0 30px hsl(199 90% 55% / 0.12)",
+                borderColor: "hsl(199 90% 55% / 0.4)",
               }}
-              className="p-6 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
+              className="holo-card p-6 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
             >
               <motion.div
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <item.icon size={20} className="text-primary mb-4" />
+                <item.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
               </motion.div>
-              <h3 className="font-display font-semibold text-foreground mb-2">
+              <h3 className="font-display font-semibold text-foreground mb-2 text-sm tracking-wide">
                 {item.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">

@@ -45,9 +45,9 @@ const cases = [
 const MetricCounter = ({ num, prefix, suffix, label, inView }: { num: number; prefix: string; suffix: string; label: string; inView: boolean }) => {
   const count = useCountUp(num, 2000, inView);
   return (
-    <div className="lg:min-w-[140px] flex lg:flex-col items-center gap-2 p-4 rounded-lg bg-accent-soft text-center">
+    <div className="lg:min-w-[140px] flex lg:flex-col items-center gap-2 p-4 rounded-lg bg-accent-soft border border-primary/20 text-center">
       <motion.span
-        className="font-display text-3xl font-bold text-primary"
+        className="font-display text-2xl font-bold text-primary drop-shadow-[0_0_10px_hsl(199_90%_55%/0.4)] tracking-wider"
         initial={{ scale: 0.5 }}
         animate={inView ? { scale: 1 } : {}}
         transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
@@ -71,10 +71,10 @@ const CaseStudies = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Impact
+          <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+            ✦ Battle Reports ✦
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-12 tracking-wide">
             Selected case studies
           </h2>
         </motion.div>
@@ -88,22 +88,22 @@ const CaseStudies = () => {
               transition={{ duration: 0.5, delay: 0.2 * i }}
               whileHover={{
                 y: -4,
-                boxShadow: "0 20px 40px -15px hsl(174 60% 50% / 0.12)",
+                boxShadow: "0 0 30px hsl(199 90% 55% / 0.1)",
               }}
-              className="p-6 md:p-8 rounded-xl bg-surface-elevated border border-divider transition-colors duration-300 hover:border-primary/30"
+              className="holo-card p-6 md:p-8 rounded-xl bg-surface-elevated border border-divider transition-all duration-300 hover:border-primary/30"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <motion.div whileHover={{ rotate: 20 }} transition={{ type: "spring" }}>
-                      <c.icon size={18} className="text-primary" />
+                      <c.icon size={18} className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
                     </motion.div>
-                    <span className="text-xs font-medium tracking-wider uppercase text-primary">
+                    <span className="text-xs font-display font-medium tracking-wider uppercase text-primary">
                       {c.tag}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-xl font-bold text-foreground mb-4">
+                  <h3 className="font-display text-lg font-bold text-foreground mb-4 tracking-wide">
                     {c.title}
                   </h3>
 

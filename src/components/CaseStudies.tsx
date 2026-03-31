@@ -40,6 +40,42 @@ const cases = [
     metricSuffix: "%",
     metricLabel: "Reporting Time",
   },
+  {
+    icon: TrendingUp,
+    tag: "Revenue Optimization",
+    title: "Pricing Page Redesign",
+    problem: "Pricing page had high bounce rates and low plan selection engagement.",
+    action: "Redesigned pricing layout with clearer value propositions, social proof elements, and streamlined plan comparison.",
+    result: "Boosted plan selection rate by 34%, directly increasing monthly recurring revenue.",
+    metricNum: 34,
+    metricPrefix: "+",
+    metricSuffix: "%",
+    metricLabel: "Plan Selection Rate",
+  },
+  {
+    icon: Filter,
+    tag: "User Retention",
+    title: "Onboarding Flow Optimization",
+    problem: "New users were dropping off during the onboarding process before reaching key activation milestones.",
+    action: "Mapped the user journey, simplified onboarding steps, and introduced progressive disclosure with contextual guidance.",
+    result: "Improved user activation rate by 27%, leading to stronger long-term retention metrics.",
+    metricNum: 27,
+    metricPrefix: "+",
+    metricSuffix: "%",
+    metricLabel: "Activation Rate",
+  },
+  {
+    icon: BarChart3,
+    tag: "Performance Marketing",
+    title: "Ad Landing Page Testing",
+    problem: "Paid ad campaigns were generating traffic but failing to convert at target cost-per-acquisition.",
+    action: "Created and tested multiple landing page variants tailored to specific ad audiences with personalized messaging.",
+    result: "Reduced cost-per-acquisition by 41% while maintaining lead quality standards.",
+    metricNum: 41,
+    metricPrefix: "-",
+    metricSuffix: "%",
+    metricLabel: "Cost Per Acquisition",
+  },
 ];
 
 const MetricCounter = ({ num, prefix, suffix, label, inView }: { num: number; prefix: string; suffix: string; label: string; inView: boolean }) => {
@@ -79,7 +115,7 @@ const CaseStudies = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {cases.map((c, i) => (
             <motion.div
               key={c.title}

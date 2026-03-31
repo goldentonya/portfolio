@@ -115,7 +115,7 @@ const CaseStudies = () => {
           </h2>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {cases.map((c, i) => (
             <motion.div
               key={c.title}

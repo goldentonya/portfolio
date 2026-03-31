@@ -7,7 +7,7 @@ const timeline = [
     roles: [
       {
         title: "Technical Performance Strategist",
-        period: "Current",
+        period: "July 2025 – Present",
         bullets: [
           "Led A/B testing strategy across product surfaces to improve conversion rate and lead performance",
           "Built analytics dashboards to track KPIs and inform data-driven decisions",
@@ -17,7 +17,7 @@ const timeline = [
       },
       {
         title: "Marketing Supervisor",
-        period: "Previous",
+        period: "July 2024 – July 2025",
         bullets: [
           "Managed marketing team operations and campaign performance",
           "Oversaw CRO initiatives and cross-channel optimization",
@@ -25,7 +25,7 @@ const timeline = [
       },
       {
         title: "CRO Specialist",
-        period: "Previous",
+        period: "January 2022 – July 2024",
         bullets: [
           "Designed and implemented conversion rate optimization experiments",
           "Analyzed user behavior data to identify improvement opportunities",
@@ -33,7 +33,7 @@ const timeline = [
       },
       {
         title: "WordPress Developer",
-        period: "Previous",
+        period: "February 2021 – January 2022",
         bullets: [
           "Built and maintained company websites on WordPress",
           "Implemented technical improvements for site performance and SEO",
@@ -46,7 +46,7 @@ const timeline = [
     roles: [
       {
         title: "Front End Web Developer & Graphic Designer",
-        period: "Previous",
+        period: "May 2018 – May 2020",
         bullets: [
           "Maintained client websites and implemented SEO best practices",
           "Created branding assets and marketing collateral",

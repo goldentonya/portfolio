@@ -46,7 +46,7 @@ const timeline = [
     roles: [
       {
         title: "Front End Web Developer & Graphic Designer",
-        period: "Previous",
+        period: "May 2018 – May 2020",
         bullets: [
           "Maintained client websites and implemented SEO best practices",
           "Created branding assets and marketing collateral",

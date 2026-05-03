@@ -50,13 +50,13 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Button asChild size="lg" className="font-medium w-full sm:w-auto group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
-              <a href="mailto:tonya@example.com">
+              <a href="mailto:goldentonya33@gmail.com">
                 <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 Email Me
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto group border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(199_90%_55%/0.15)]">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/tonyagolden/" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={16} className="mr-2 transition-transform group-hover:scale-110" />
                 LinkedIn
               </a>

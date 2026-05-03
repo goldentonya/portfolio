@@ -32,7 +32,7 @@ const Navbar = () => {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="section-container flex items-center justify-between h-16">
+      <div className="section-container flex items-center justify-between h-24">
         <motion.a
           href="#"
           className="flex items-center drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]"
@@ -40,7 +40,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
           aria-label="Tonya Golden"
         >
-          <img src={logo} alt="Tonya Golden logo" className="h-10 w-auto object-contain" />
+          <img src={logo} alt="Tonya Golden logo" className="h-16 w-auto object-contain" />
         </motion.a>
 
         <div className="hidden md:flex items-center gap-8">

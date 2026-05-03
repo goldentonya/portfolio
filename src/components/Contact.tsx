@@ -1,11 +1,27 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Mail, Linkedin, MapPin } from "lucide-react";
+import { useRef, useState } from "react";
+import { Mail, Linkedin, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
+      toast({ title: "Missing fields", description: "Please fill in all fields.", variant: "destructive" });
+      return;
+    }
+    const body = `Name: ${form.name}%0D%0AEmail: ${form.email}%0D%0A%0D%0A${encodeURIComponent(form.message)}`;
+    window.location.href = `mailto:goldentonya33@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${body}`;
+    toast({ title: "Opening your email client", description: "Your message is ready to send." });
+  };
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
@@ -16,62 +32,137 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto text-center"
+          className="max-w-5xl mx-auto"
         >
-          <motion.p
-            className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-          >
-            ✦ Transmission ✦
-          </motion.p>
-          <motion.h2
-            className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-wide"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Let's connect
-          </motion.h2>
-          <motion.p
-            className="text-muted-foreground mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Open to opportunities in product, growth, and experimentation roles. Let's discuss how I can help your team make smarter, data-driven decisions.
-          </motion.p>
+          <div className="text-center mb-10">
+            <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-3">
+              ✦ Transmission ✦
+            </p>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-wide">
+              Let's connect
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Open to opportunities in product, growth, and experimentation roles. Let's discuss how I can help your team make smarter, data-driven decisions.
+            </p>
+          </div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Button asChild size="lg" className="font-medium w-full sm:w-auto group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
-              <a href="mailto:goldentonya33@gmail.com">
-                <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
-                Email Me
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="font-medium w-full sm:w-auto group border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(199_90%_55%/0.15)]">
-              <a href="https://www.linkedin.com/in/tonyagolden/" target="_blank" rel="noopener noreferrer">
-                <Linkedin size={16} className="mr-2 transition-transform group-hover:scale-110" />
-                LinkedIn
-              </a>
-            </Button>
-          </motion.div>
+          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-8">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-card/40 backdrop-blur-sm border border-primary/20 rounded-lg p-6 md:p-8 space-y-4 shadow-[0_0_30px_hsl(199_90%_55%/0.08)]"
+            >
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input
+                    id="name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Jane Doe"
+                    maxLength={100}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="jane@company.com"
+                    maxLength={255}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="subject">Subject</Label>
+                <Input
+                  id="subject"
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  placeholder="Let's work together"
+                  maxLength={150}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Your Message</Label>
+                <Textarea
+                  id="message"
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="Tell me about your project or opportunity..."
+                  rows={6}
+                  maxLength={2000}
+                  required
+                />
+              </div>
+              <Button type="submit" size="lg" className="w-full font-medium group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
+                <Send size={16} className="mr-2 transition-transform group-hover:translate-x-0.5" />
+                Send Transmission
+              </Button>
+            </form>
 
-          <motion.div
-            className="flex items-center justify-center gap-2 text-sm text-text-tertiary"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <MapPin size={14} />
-            <span>Tampa, FL</span>
-          </motion.div>
+            <div className="bg-card/40 backdrop-blur-sm border border-primary/20 rounded-lg p-6 md:p-8 space-y-6 shadow-[0_0_30px_hsl(199_90%_55%/0.08)]">
+              <div>
+                <h3 className="font-display text-lg font-semibold text-foreground mb-1 tracking-wide">
+                  Direct Channels
+                </h3>
+                <p className="text-sm text-muted-foreground">Reach out through any of these.</p>
+              </div>
+
+              <a
+                href="mailto:goldentonya33@gmail.com"
+                className="flex items-start gap-3 group"
+              >
+                <div className="p-2 rounded-md bg-primary/10 border border-primary/20 group-hover:border-primary/50 transition-colors">
+                  <Mail size={16} className="text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs uppercase tracking-wider text-text-tertiary">Email</p>
+                  <p className="text-sm text-foreground group-hover:text-primary transition-colors break-all">
+                    goldentonya33@gmail.com
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/tonyagolden/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 group"
+              >
+                <div className="p-2 rounded-md bg-primary/10 border border-primary/20 group-hover:border-primary/50 transition-colors">
+                  <Linkedin size={16} className="text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs uppercase tracking-wider text-text-tertiary">LinkedIn</p>
+                  <p className="text-sm text-foreground group-hover:text-primary transition-colors">
+                    /in/tonyagolden
+                  </p>
+                </div>
+              </a>
+
+              <a href="tel:7646149979" className="flex items-start gap-3 group">
+                <div className="p-2 rounded-md bg-primary/10 border border-primary/20 group-hover:border-primary/50 transition-colors">
+                  <Phone size={16} className="text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs uppercase tracking-wider text-text-tertiary">Phone</p>
+                  <p className="text-sm text-foreground group-hover:text-primary transition-colors">
+                    764-614-9979
+                  </p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-2 text-sm text-text-tertiary pt-4 border-t border-primary/10">
+                <MapPin size={14} />
+                <span>Tampa, FL</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

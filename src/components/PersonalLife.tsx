@@ -1,10 +1,25 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import personal1 from "@/assets/personal-1.jpeg";
+import personal2 from "@/assets/personal-2.jpeg";
+import personal3 from "@/assets/personal-3.jpeg";
+import personal4 from "@/assets/personal-4.jpeg";
+import personal5 from "@/assets/personal-5.jpeg";
+import personal6 from "@/assets/personal-6.jpeg";
+import personal7 from "@/assets/personal-7.jpeg";
+import personal8 from "@/assets/personal-8.jpeg";
+import personal9 from "@/assets/personal-9.jpeg";
 
 const placeholderImages = [
-  { src: "https://placehold.co/600x800/0a1628/22d3ee?text=Photo+1", alt: "Personal photo 1" },
-  { src: "https://placehold.co/600x800/0a1628/22d3ee?text=Photo+2", alt: "Personal photo 2" },
-  { src: "https://placehold.co/600x800/0a1628/22d3ee?text=Photo+3", alt: "Personal photo 3" },
+  { src: personal1, alt: "With my partner in the backyard" },
+  { src: personal2, alt: "Hiking the cactus trails in Aruba" },
+  { src: personal3, alt: "Platform 9¾ at King's Cross, London" },
+  { src: personal4, alt: "Date night out" },
+  { src: personal5, alt: "Our pups in their Star Wars costumes" },
+  { src: personal6, alt: "Night fishing" },
+  { src: personal7, alt: "Bass caught on a Florida afternoon" },
+  { src: personal8, alt: "Aussie at the campsite" },
+  { src: personal9, alt: "Pup by the campfire" },
 ];
 
 const PersonalLife = () => {
@@ -32,15 +47,13 @@ const PersonalLife = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-3 gap-3"
           >
             {placeholderImages.map((img, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsl(199 90% 55% / 0.25)" }}
-                className={`relative overflow-hidden rounded-lg border border-divider holo-card ${
-                  i === 0 ? "col-span-2 aspect-[16/10]" : "aspect-square"
-                }`}
+                className="relative overflow-hidden rounded-lg border border-divider holo-card aspect-square"
               >
                 <img
                   src={img.src}

@@ -16,12 +16,12 @@ const skillGroups = [
   {
     icon: Code,
     title: "Technical",
-    skills: ["HTML, CSS, JavaScript", "WordPress"],
+    skills: ["HTML", "CSS", "JavaScript", "WordPress"],
   },
   {
     icon: Wrench,
     title: "Tools",
-    skills: ["Google Analytics", "Salesforce", "Datorama"],
+    skills: ["Google Analytics", "Salesforce", "Datorama", "VWO", "Hotjar"],
   },
 ];
 

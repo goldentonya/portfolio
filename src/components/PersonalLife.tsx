@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import personal1 from "@/assets/personal-1.jpeg";
 import personal2 from "@/assets/personal-2.jpeg";
 import personal3 from "@/assets/personal-3.jpeg";
@@ -25,6 +26,7 @@ const placeholderImages = [
 const PersonalLife = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section id="personal" className="section-padding bg-surface/60" ref={ref}>
@@ -55,12 +57,19 @@ const PersonalLife = () => {
                 whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsl(199 90% 55% / 0.25)" }}
                 className="relative overflow-hidden rounded-lg border border-divider holo-card aspect-square"
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(i)}
+                  className="block w-full h-full focus:outline-none focus:ring-2 focus:ring-primary"
+                  aria-label={`Open ${img.alt}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                  />
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -83,6 +92,17 @@ const PersonalLife = () => {
           </motion.div>
         </div>
       </div>
+      <Dialog open={openIdx !== null} onOpenChange={(o) => !o && setOpenIdx(null)}>
+        <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-primary/30">
+          {openIdx !== null && (
+            <img
+              src={placeholderImages[openIdx].src}
+              alt={placeholderImages[openIdx].alt}
+              className="w-full max-h-[85vh] object-contain rounded-md"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

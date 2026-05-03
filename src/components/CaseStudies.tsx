@@ -1,96 +1,180 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { TrendingUp, Filter, BarChart3 } from "lucide-react";
+import { MousePointerClick, Video, Mail, Image as ImageIcon } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import buttonOrig from "@/assets/case-button-orig.png";
+import buttonVar from "@/assets/case-button-var.png";
+import lifeTyvVar from "@/assets/case-life-tyv-var.png";
+import emailOrig from "@/assets/case-email-orig.png";
+import emailVar from "@/assets/case-email-var.png";
+import tyvOrig from "@/assets/case-tyv-orig.png";
+import tyvVar2 from "@/assets/case-tyv-var2.png";
+import tyvVar3 from "@/assets/case-tyv-var3.png";
+import tyvVar4 from "@/assets/case-tyv-var4.png";
 
-const cases = [
+type CaseImage = { src: string; label: string };
+
+type Case = {
+  icon: typeof MousePointerClick;
+  tag: string;
+  title: string;
+  problem: string;
+  action: string;
+  result: string;
+  metricNum: number;
+  metricPrefix: string;
+  metricSuffix: string;
+  metricLabel: string;
+  baseline: string;
+  winner: string;
+  images: CaseImage[];
+};
+
+const cases: Case[] = [
   {
-    icon: TrendingUp,
-    tag: "Conversion Rate Optimization",
-    title: "Landing Page A/B Test",
-    problem: "Low conversion rate on a high-traffic landing page was limiting lead acquisition volume.",
-    action: "Designed and executed an A/B test with a restructured layout, refined messaging hierarchy, and optimized CTA placement.",
-    result: "Achieved a 23% improvement in conversion rate, driving a significant increase in qualified leads.",
-    metricNum: 23,
-    metricPrefix: "+",
+    icon: MousePointerClick,
+    tag: "CTA Color Test",
+    title: "Button Color Change",
+    problem:
+      "While auditing competitor websites, I noticed many were using orange CTA buttons while we were using red. I wanted to test whether the color shift would lift our click rate.",
+    action:
+      "Ran an A/B test on the primary CTA, swapping the red button for an orange variant while keeping copy and placement identical.",
+    result:
+      "The orange variant outperformed the red control, lifting click rate from 43.61% to 44.26% — a small change with meaningful downstream impact at scale.",
+    metricNum: 44.26,
+    metricPrefix: "",
     metricSuffix: "%",
-    metricLabel: "Conversion Rate",
+    metricLabel: "Variant Click Rate",
+    baseline: "Original (Red): 43.61%",
+    winner: "Variant (Orange): 44.26%",
+    images: [
+      { src: buttonOrig, label: "Original" },
+      { src: buttonVar, label: "Variant" },
+    ],
   },
   {
-    icon: Filter,
+    icon: Video,
     tag: "Funnel Optimization",
-    title: "Lead Funnel Drop-off Reduction",
-    problem: "Significant drop-off identified between lead capture and policy conversion stages.",
-    action: "Analyzed user behavior data across funnel stages, identified friction points, and implemented targeted UX and messaging improvements.",
-    result: "Increased lead-to-policy conversion rate by 18%, improving overall funnel efficiency.",
-    metricNum: 18,
+    title: "LifeCompared Thank You Video",
+    problem:
+      "After a Thank You Video boosted performance in our Medicare flow, we wanted to validate the same play in our Life Insurance funnel to drive higher lead-to-policy conversion.",
+    action:
+      "Tested two Thank You Video variations on the LifeCompared confirmation page — one AI-generated and one featuring our director on camera — measuring downstream lead-to-policy.",
+    result:
+      "The director-led video won, lifting lead-to-policy from 5.8% to 6.9% and confirming that authentic, human-led video outperformed the AI alternative.",
+    metricNum: 6.9,
+    metricPrefix: "",
+    metricSuffix: "%",
+    metricLabel: "Lead-to-Policy",
+    baseline: "Original: 5.8%",
+    winner: "Winning Variant: 6.9%",
+    images: [{ src: lifeTyvVar, label: "Winning Variant" }],
+  },
+  {
+    icon: Mail,
+    tag: "Form UX",
+    title: "Move Email Field",
+    problem:
+      "Analytics showed a heavy drop-off on the final step where users were asked for name, phone, and email all at once — it felt like handing over everything in a single ask.",
+    action:
+      "Restructured the form by moving the email field to an earlier step, separating it from the phone field so the contact ask felt more progressive and less invasive.",
+    result:
+      "The repositioned email field reduced friction at the final step and lifted overall conversions by 3.48%.",
+    metricNum: 3.48,
     metricPrefix: "+",
     metricSuffix: "%",
-    metricLabel: "Lead-to-Policy Rate",
+    metricLabel: "Conversions",
+    baseline: "Original: email on final step",
+    winner: "Variant: email moved earlier",
+    images: [
+      { src: emailOrig, label: "Original" },
+      { src: emailVar, label: "Variant" },
+    ],
   },
   {
-    icon: BarChart3,
-    tag: "Dashboard & Insights",
-    title: "KPI Analytics Dashboard",
-    problem: "Leadership lacked real-time visibility into performance metrics and experiment outcomes.",
-    action: "Built comprehensive analytics dashboards consolidating KPIs from multiple data sources with automated reporting.",
-    result: "Enabled data-driven decision making across teams, reducing reporting time by 60%.",
-    metricNum: 60,
-    metricPrefix: "-",
+    icon: ImageIcon,
+    tag: "Video Engagement",
+    title: "Medicare Thank You Video Thumbnails",
+    problem:
+      "After launching the Medicare Thank You Video, watch rates were lower than expected — the default thumbnail wasn't compelling enough to pull users into the video.",
+    action:
+      "Designed and tested 3 new high-contrast thumbnail variations against the original, optimizing for visual interrupt and click-to-play intent.",
+    result:
+      "All 3 variations beat the control on lead-to-policy, with the winning thumbnail lifting LTP from 4.3% to 5.9%.",
+    metricNum: 5.9,
+    metricPrefix: "",
     metricSuffix: "%",
-    metricLabel: "Reporting Time",
-  },
-  {
-    icon: TrendingUp,
-    tag: "Revenue Optimization",
-    title: "Pricing Page Redesign",
-    problem: "Pricing page had high bounce rates and low plan selection engagement.",
-    action: "Redesigned pricing layout with clearer value propositions, social proof elements, and streamlined plan comparison.",
-    result: "Boosted plan selection rate by 34%, directly increasing monthly recurring revenue.",
-    metricNum: 34,
-    metricPrefix: "+",
-    metricSuffix: "%",
-    metricLabel: "Plan Selection Rate",
-  },
-  {
-    icon: Filter,
-    tag: "User Retention",
-    title: "Onboarding Flow Optimization",
-    problem: "New users were dropping off during the onboarding process before reaching key activation milestones.",
-    action: "Mapped the user journey, simplified onboarding steps, and introduced progressive disclosure with contextual guidance.",
-    result: "Improved user activation rate by 27%, leading to stronger long-term retention metrics.",
-    metricNum: 27,
-    metricPrefix: "+",
-    metricSuffix: "%",
-    metricLabel: "Activation Rate",
-  },
-  {
-    icon: BarChart3,
-    tag: "Performance Marketing",
-    title: "Ad Landing Page Testing",
-    problem: "Paid ad campaigns were generating traffic but failing to convert at target cost-per-acquisition.",
-    action: "Created and tested multiple landing page variants tailored to specific ad audiences with personalized messaging.",
-    result: "Reduced cost-per-acquisition by 41% while maintaining lead quality standards.",
-    metricNum: 41,
-    metricPrefix: "-",
-    metricSuffix: "%",
-    metricLabel: "Cost Per Acquisition",
+    metricLabel: "Lead-to-Policy",
+    baseline: "Original: 4.3%",
+    winner: "Winning Variant: 5.9%",
+    images: [
+      { src: tyvOrig, label: "Original" },
+      { src: tyvVar2, label: "Variation 2" },
+      { src: tyvVar3, label: "Variation 3" },
+      { src: tyvVar4, label: "Variation 4" },
+    ],
   },
 ];
 
-const MetricCounter = ({ num, prefix, suffix, label, inView }: { num: number; prefix: string; suffix: string; label: string; inView: boolean }) => {
-  const count = useCountUp(num, 2000, inView);
+const MetricCounter = ({
+  num,
+  prefix,
+  suffix,
+  label,
+  inView,
+}: {
+  num: number;
+  prefix: string;
+  suffix: string;
+  label: string;
+  inView: boolean;
+}) => {
+  const isFloat = !Number.isInteger(num);
+  const target = isFloat ? Math.round(num * 100) : num;
+  const raw = useCountUp(target, 2000, inView);
+  const display = isFloat ? (raw / 100).toFixed(2) : raw;
   return (
-    <div className="lg:min-w-[140px] flex lg:flex-col items-center gap-2 p-4 rounded-lg bg-accent-soft border border-primary/20 text-center">
+    <div className="min-w-[140px] flex flex-col items-center gap-2 p-4 rounded-lg bg-accent-soft border border-primary/20 text-center">
       <motion.span
         className="font-display text-2xl font-bold text-primary drop-shadow-[0_0_10px_hsl(199_90%_55%/0.4)] tracking-wider"
         initial={{ scale: 0.5 }}
         animate={inView ? { scale: 1 } : {}}
         transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
       >
-        {prefix}{count}{suffix}
+        {prefix}
+        {display}
+        {suffix}
       </motion.span>
       <span className="text-xs text-muted-foreground font-medium">{label}</span>
+    </div>
+  );
+};
+
+const CaseImages = ({ images }: { images: CaseImage[] }) => {
+  const cols =
+    images.length === 1
+      ? "grid-cols-1"
+      : images.length === 2
+      ? "grid-cols-1 sm:grid-cols-2"
+      : "grid-cols-2";
+  return (
+    <div className={`grid ${cols} gap-3 mb-6`}>
+      {images.map((img) => (
+        <figure
+          key={img.label}
+          className="group relative overflow-hidden rounded-lg border border-divider bg-background/40"
+        >
+          <img
+            src={img.src}
+            alt={img.label}
+            loading="lazy"
+            className="w-full h-40 sm:h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <figcaption className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-background/80 backdrop-blur-sm border border-primary/30 text-[10px] font-display tracking-widest uppercase text-primary">
+            {img.label}
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 };
@@ -121,42 +205,55 @@ const CaseStudies = () => {
               key={c.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 * i }}
+              transition={{ duration: 0.5, delay: 0.15 * i }}
               whileHover={{
                 y: -4,
                 boxShadow: "0 0 30px hsl(199 90% 55% / 0.1)",
               }}
-              className="holo-card p-6 md:p-8 rounded-xl bg-surface-elevated border border-divider transition-all duration-300 hover:border-primary/30"
+              className="holo-card p-6 md:p-8 rounded-xl bg-surface-elevated border border-divider transition-all duration-300 hover:border-primary/30 flex flex-col"
             >
-              <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <motion.div whileHover={{ rotate: 20 }} transition={{ type: "spring" }}>
-                      <c.icon size={18} className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
-                    </motion.div>
-                    <span className="text-xs font-display font-medium tracking-wider uppercase text-primary">
-                      {c.tag}
-                    </span>
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div whileHover={{ rotate: 20 }} transition={{ type: "spring" }}>
+                  <c.icon
+                    size={18}
+                    className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]"
+                  />
+                </motion.div>
+                <span className="text-xs font-display font-medium tracking-wider uppercase text-primary">
+                  {c.tag}
+                </span>
+              </div>
+
+              <h3 className="font-display text-lg font-bold text-foreground mb-5 tracking-wide">
+                {c.title}
+              </h3>
+
+              <CaseImages images={c.images} />
+
+              <div className="space-y-3 text-sm mb-6">
+                {[
+                  { label: "Problem", text: c.problem },
+                  { label: "Action", text: c.action },
+                  { label: "Result", text: c.result },
+                ].map((item) => (
+                  <div key={item.label}>
+                    <span className="font-semibold text-foreground">{item.label}: </span>
+                    <span className="text-muted-foreground">{item.text}</span>
                   </div>
+                ))}
+              </div>
 
-                  <h3 className="font-display text-lg font-bold text-foreground mb-4 tracking-wide">
-                    {c.title}
-                  </h3>
-
-                  <div className="space-y-3 text-sm">
-                    {[
-                      { label: "Problem", text: c.problem },
-                      { label: "Action", text: c.action },
-                      { label: "Result", text: c.result },
-                    ].map((item) => (
-                      <div key={item.label}>
-                        <span className="font-semibold text-foreground">{item.label}: </span>
-                        <span className="text-muted-foreground">{item.text}</span>
-                      </div>
-                    ))}
+              <div className="mt-auto flex flex-col sm:flex-row sm:items-center gap-4 pt-4 border-t border-divider">
+                <div className="flex-1 space-y-1 text-xs">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/60" />
+                    {c.baseline}
+                  </div>
+                  <div className="flex items-center gap-2 text-foreground font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_hsl(199_90%_55%/0.8)]" />
+                    {c.winner}
                   </div>
                 </div>
-
                 <MetricCounter
                   num={c.metricNum}
                   prefix={c.metricPrefix}

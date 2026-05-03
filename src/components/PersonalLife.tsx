@@ -44,12 +44,32 @@ const PersonalLife = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 items-center">
+        <div className="flex flex-col gap-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-3"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-4"
+          >
+            <p className="text-muted-foreground leading-relaxed">
+              I'm originally from Minnesota, where I was born and raised, and in 2020 I made the move down to Tampa, Florida for a change of pace and a lot more sunshine.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Outside of work, most of my time is spent with my amazing boyfriend and our two Australian Shepherds, who are absolutely our babies and keep life fun. We love staying active and being outdoors together, whether that's working out, heading to the beach, camping, or going fishing. I also enjoy winding down with video games when I get the chance.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Travel is a big passion of mine, and I'm always looking forward to the next trip. At the top of my bucket list is visiting Japan — a place I've wanted to experience for a long time.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              I'm also a big music fan and love going to concerts whenever I can. And I'm definitely a nerd at heart — I've always loved Star Wars, Pokémon, and anime like Bleach, Demon Slayer, Black Clover and many more.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-3 gap-3 md:gap-4"
           >
             {placeholderImages.map((img, i) => (
               <motion.div
@@ -72,26 +92,6 @@ const PersonalLife = () => {
                 </button>
               </motion.div>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-4"
-          >
-            <p className="text-muted-foreground leading-relaxed">
-              I'm originally from Minnesota, where I was born and raised, and in 2020 I made the move down to Tampa, Florida for a change of pace and a lot more sunshine.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Outside of work, most of my time is spent with my amazing boyfriend and our two Australian Shepherds, who are absolutely our babies and keep life fun. We love staying active and being outdoors together, whether that's working out, heading to the beach, camping, or going fishing. I also enjoy winding down with video games when I get the chance.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Travel is a big passion of mine, and I'm always looking forward to the next trip. At the top of my bucket list is visiting Japan — a place I've wanted to experience for a long time.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              I'm also a big music fan and love going to concerts whenever I can. And I'm definitely a nerd at heart — I've always loved Star Wars, Pokémon, and anime like Bleach, Demon Slayer, Black Clover and many more.
-            </p>
           </motion.div>
         </div>
       </div>

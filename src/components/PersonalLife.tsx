@@ -44,12 +44,12 @@ const PersonalLife = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 md:grid-cols-4 gap-3"
+            className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-3"
           >
             {placeholderImages.map((img, i) => (
               <motion.div

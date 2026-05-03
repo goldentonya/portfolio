@@ -1,7 +1,8 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { MousePointerClick, Video, Mail, Image as ImageIcon } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import buttonOrig from "@/assets/case-button-orig.png";
 import buttonVar from "@/assets/case-button-var.png";
 import lifeTyvVar from "@/assets/case-life-tyv-var.png";
@@ -151,30 +152,52 @@ const MetricCounter = ({
 };
 
 const CaseImages = ({ images }: { images: CaseImage[] }) => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const cols =
     images.length === 1
       ? "grid-cols-1"
       : images.length === 2
       ? "grid-cols-1 sm:grid-cols-2"
-      : "grid-cols-2";
+      : "grid-cols-2 sm:grid-cols-4";
+  const tile = images.length >= 4 ? "h-28 sm:h-32" : "h-40 sm:h-48";
   return (
     <div className={`grid ${cols} gap-3 mb-6`}>
-      {images.map((img) => (
-        <figure
-          key={img.label}
-          className="group relative overflow-hidden rounded-lg border border-divider bg-background/40"
-        >
-          <img
-            src={img.src}
-            alt={img.label}
-            loading="lazy"
-            className="w-full h-40 sm:h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          />
-          <figcaption className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-background/80 backdrop-blur-sm border border-primary/30 text-[10px] font-display tracking-widest uppercase text-primary">
+      {images.map((img, idx) => (
+        <figure key={img.label} className="flex flex-col gap-2">
+          <span className="inline-flex self-start items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/15 border border-primary/40 text-[10px] font-display font-bold tracking-[0.2em] uppercase text-primary shadow-[0_0_10px_hsl(199_90%_55%/0.25)]">
+            <span className="w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_hsl(199_90%_55%/0.9)]" />
             {img.label}
-          </figcaption>
+          </span>
+          <button
+            type="button"
+            onClick={() => setOpenIdx(idx)}
+            className="group relative overflow-hidden rounded-lg border border-divider bg-background/40 cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <img
+              src={img.src}
+              alt={img.label}
+              loading="lazy"
+              className={`w-full ${tile} object-cover object-top transition-transform duration-500 group-hover:scale-105`}
+            />
+          </button>
         </figure>
       ))}
+      <Dialog open={openIdx !== null} onOpenChange={(o) => !o && setOpenIdx(null)}>
+        <DialogContent className="max-w-5xl w-[95vw] p-2 bg-background border-primary/30">
+          {openIdx !== null && (
+            <div className="flex flex-col gap-3">
+              <span className="self-start ml-2 mt-2 px-2.5 py-1 rounded-md bg-primary/15 border border-primary/40 text-[10px] font-display font-bold tracking-[0.2em] uppercase text-primary">
+                {images[openIdx].label}
+              </span>
+              <img
+                src={images[openIdx].src}
+                alt={images[openIdx].label}
+                className="w-full max-h-[80vh] object-contain rounded-md"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

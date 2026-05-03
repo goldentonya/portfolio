@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import PersonalLife from "@/components/PersonalLife";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import CaseStudies from "@/components/CaseStudies";
@@ -19,6 +20,8 @@ const Index = () => {
         <Hero />
         <div className="lightsaber-divider" />
         <About />
+        <div className="lightsaber-divider" />
+        <PersonalLife />
         <div className="lightsaber-divider" />
         <Skills />
         <div className="lightsaber-divider" />

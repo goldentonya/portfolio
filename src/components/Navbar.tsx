@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import tgLogo from "@/assets/tg-logo.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -35,12 +34,11 @@ const Navbar = () => {
       <div className="section-container flex items-center justify-between h-16">
         <motion.a
           href="#"
-          className="flex items-center drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]"
-          aria-label="Tonya Golden home"
+          className="font-display font-bold text-lg text-primary tracking-widest drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <img src={tgLogo} alt="Tonya Golden logo" width={40} height={40} className="h-10 w-10 object-contain" />
+          TG
         </motion.a>
 
         <div className="hidden md:flex items-center gap-8">

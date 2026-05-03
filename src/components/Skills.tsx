@@ -62,13 +62,8 @@ const Skills = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {skillGroups.map((group) => (
-            <motion.div key={group.title} variants={itemVariants} whileHover={{ y: -4 }} className="group">
-              <motion.div
-                whileHover={{ rotate: 15, scale: 1.2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <group.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
-              </motion.div>
+            <motion.div key={group.title} variants={itemVariants} className="group">
+              <group.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
               <h3 className="font-display font-semibold text-foreground mb-4 text-sm tracking-wide">
                 {group.title}
               </h3>

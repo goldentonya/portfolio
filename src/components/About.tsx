@@ -72,12 +72,7 @@ const About = () => {
               }}
               className="holo-card p-6 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
             >
-              <motion.div
-                whileHover={{ rotate: 10, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <item.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
-              </motion.div>
+              <item.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
               <h3 className="font-display font-semibold text-foreground mb-2 text-sm tracking-wide">
                 {item.title}
               </h3>

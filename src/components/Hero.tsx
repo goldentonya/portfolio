@@ -174,7 +174,7 @@ const Hero = () => {
                 </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="font-medium group border-primary/30 hover:border-primary hover:shadow-[0_0_15px_hsl(199_90%_55%/0.15)]">
-                <a href="mailto:goldentonya33@gmail.com">
+                <a href="#contact">
                   <Mail size={16} className="mr-2 transition-transform group-hover:scale-110" />
                   Contact Me
                 </a>

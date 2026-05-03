@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, Code2, FlaskConical, BarChart3, LineChart, Database, GitBranch, Cpu, Zap, Binary, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/tonya-portrait.jpeg";
 import { useEffect, useState } from "react";
@@ -48,6 +48,51 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center relative pt-16 overflow-hidden">
+      {/* Holographic grid backdrop */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(199 90% 55% / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(199 90% 55% / 0.5) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+        }}
+      />
+
+      {/* Floating tech icons (coding, experimentation, data) */}
+      {[
+        { Icon: Code2, left: "6%", top: "18%", size: 28, delay: 0 },
+        { Icon: FlaskConical, left: "14%", top: "72%", size: 26, delay: 0.6 },
+        { Icon: BarChart3, left: "22%", top: "30%", size: 30, delay: 1.2 },
+        { Icon: Database, left: "30%", top: "82%", size: 24, delay: 0.4 },
+        { Icon: GitBranch, left: "44%", top: "12%", size: 22, delay: 1.8 },
+        { Icon: LineChart, left: "58%", top: "68%", size: 32, delay: 0.9 },
+        { Icon: Cpu, left: "72%", top: "22%", size: 26, delay: 1.4 },
+        { Icon: Activity, left: "82%", top: "78%", size: 28, delay: 0.3 },
+        { Icon: Binary, left: "90%", top: "40%", size: 24, delay: 2.1 },
+        { Icon: Zap, left: "50%", top: "88%", size: 22, delay: 1.6 },
+      ].map(({ Icon, left, top, size, delay }, i) => (
+        <motion.div
+          key={i}
+          className="absolute -z-10 text-primary/25 drop-shadow-[0_0_8px_hsl(199_90%_55%/0.5)]"
+          style={{ left, top }}
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.15, 0.45, 0.15],
+            rotate: [0, 6, 0],
+          }}
+          transition={{
+            duration: 7 + (i % 4),
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay,
+          }}
+        >
+          <Icon size={size} strokeWidth={1.5} />
+        </motion.div>
+      ))}
+
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (
         <motion.div

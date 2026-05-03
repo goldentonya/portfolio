@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/tonya-portrait.jpeg";
 import { useEffect, useState } from "react";
 
 const roles = [
@@ -148,9 +148,7 @@ const Hero = () => {
             <div className="relative rounded-xl overflow-hidden shadow-[0_0_40px_hsl(199_90%_55%/0.15)] border border-primary/20">
               <img
                 src={heroImage}
-                alt="Holographic data visualization dashboards floating in space"
-                width={1920}
-                height={800}
+                alt="Tonya Golden, Technical Performance Strategist"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-primary/5" />

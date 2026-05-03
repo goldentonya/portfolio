@@ -81,13 +81,16 @@ const PersonalLife = () => {
             className="space-y-4"
           >
             <p className="text-muted-foreground leading-relaxed">
-              [Dummy content] When I'm not running experiments or digging through analytics dashboards, you can find me exploring the sunny streets of Tampa, hunting for the best coffee spots in town, and soaking up time with the people I love most.
+              I'm originally from Minnesota, where I was born and raised, and in 2020 I made the move down to Tampa, Florida for a change of pace and a lot more sunshine.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              [Dummy content] Outside of work, I'm passionate about [hobby], an avid [interest], and a devoted [family/pet detail]. I believe the same curiosity that fuels great experiments is the same one that makes life genuinely fun — always asking "what if?" and being willing to test the answer.
+              Outside of work, most of my time is spent with my amazing boyfriend and our two Australian Shepherds, who are absolutely our babies and keep life fun. We love staying active and being outdoors together, whether that's working out, heading to the beach, camping, or going fishing. I also enjoy winding down with video games when I get the chance.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              [Dummy content] A few things I love: [thing 1], [thing 2], and [thing 3]. Replace this with your real story whenever you're ready.
+              Travel is a big passion of mine, and I'm always looking forward to the next trip. At the top of my bucket list is visiting Japan — a place I've wanted to experience for a long time.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              I'm also a big music fan and love going to concerts whenever I can. And I'm definitely a nerd at heart — I've always loved Star Wars, Pokémon, and anime like Bleach, Demon Slayer, Black Clover and many more.
             </p>
           </motion.div>
         </div>

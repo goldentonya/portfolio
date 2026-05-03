@@ -69,9 +69,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <motion.div animate={{ y: [0, -2, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-              <MapPin size={14} />
-            </motion.div>
+            <MapPin size={14} />
             <span>Tampa, FL</span>
           </motion.div>
         </motion.div>

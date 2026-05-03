@@ -10,12 +10,12 @@ const StatCard = ({ label, value, suffix = "", isYear = false, delay, isInView }
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay }}
-      className="holo-card p-6 rounded-lg bg-surface-elevated border border-divider text-center"
+      className="holo-card p-3 sm:p-6 rounded-lg bg-surface-elevated border border-divider text-center flex flex-col items-center justify-center"
     >
-      <p className="font-display text-2xl md:text-3xl font-bold text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]">
+      <p className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]">
         {isYear ? value : count}{suffix}
       </p>
-      <p className="text-sm text-muted-foreground mt-2">{label}</p>
+      <p className="text-xs sm:text-sm text-muted-foreground mt-2">{label}</p>
     </motion.div>
   );
 };

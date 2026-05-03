@@ -214,7 +214,6 @@ const Hero = () => {
       {/* Glow effects */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl -z-10" />
       <div className="absolute -top-20 left-1/3 w-[500px] h-[500px] bg-primary/4 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -z-10" />
     </section>
   );
 };

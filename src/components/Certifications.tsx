@@ -33,12 +33,7 @@ const Certifications = () => {
           }}
           className="holo-card inline-flex items-center gap-4 p-5 rounded-lg bg-surface-elevated border border-divider transition-colors duration-300 cursor-default"
         >
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
-          >
-            <Award size={24} className="text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]" />
-          </motion.div>
+          <Award size={24} className="text-primary drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]" />
           <div>
             <h3 className="font-display font-semibold text-foreground text-sm tracking-wide">
               Google Ads Search Certification

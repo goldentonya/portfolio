@@ -82,7 +82,7 @@ const Contact = () => {
                   id="subject"
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  placeholder="Let's work together"
+                  placeholder="Subject"
                   maxLength={150}
                   required
                 />

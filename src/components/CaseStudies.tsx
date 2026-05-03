@@ -158,7 +158,7 @@ const CaseImages = ({ images }: { images: CaseImage[] }) => {
       ? "grid-cols-1"
       : images.length === 2
       ? "grid-cols-1 sm:grid-cols-2"
-      : "grid-cols-2 sm:grid-cols-4";
+      : "grid-cols-2";
   const tile = images.length >= 4 ? "h-28 sm:h-32" : "h-40 sm:h-48";
   return (
     <div className={`grid ${cols} gap-3 mb-6`}>

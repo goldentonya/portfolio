@@ -11,16 +11,40 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
       toast({ title: "Missing fields", description: "Please fill in all fields.", variant: "destructive" });
       return;
     }
-    const body = `Name: ${form.name}%0D%0AEmail: ${form.email}%0D%0A%0D%0A${encodeURIComponent(form.message)}`;
-    window.location.href = `mailto:goldentonya33@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${body}`;
-    toast({ title: "Opening your email client", description: "Your message is ready to send." });
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "24808904-f5c3-455b-8bda-a420985754e5",
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          from_name: "Portfolio Contact Form",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast({ title: "Transmission sent", description: "Thanks for reaching out — I'll be in touch soon." });
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast({ title: "Something went wrong", description: data.message || "Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Network error", description: "Please try again in a moment.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -99,9 +123,9 @@ const Contact = () => {
                   required
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full font-medium group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
+              <Button type="submit" size="lg" disabled={submitting} className="w-full font-medium group shadow-[0_0_15px_hsl(199_90%_55%/0.2)]">
                 <Send size={16} className="mr-2 transition-transform group-hover:translate-x-0.5" />
-                Send Transmission
+                {submitting ? "Sending..." : "Send Transmission"}
               </Button>
             </form>
 

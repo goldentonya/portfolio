@@ -12,15 +12,15 @@ import personal8 from "@/assets/personal-8.jpeg";
 import personal9 from "@/assets/personal-9.jpeg";
 
 const placeholderImages = [
-  { src: personal1, alt: "With my partner in the backyard" },
-  { src: personal2, alt: "Hiking the cactus trails in Aruba" },
-  { src: personal3, alt: "Platform 9¾ at King's Cross, London" },
-  { src: personal4, alt: "Date night out" },
   { src: personal5, alt: "Our pups in their Star Wars costumes" },
-  { src: personal6, alt: "Night fishing" },
+  { src: personal2, alt: "Hiking the cactus trails in Aruba" },
   { src: personal7, alt: "Bass caught on a Florida afternoon" },
-  { src: personal8, alt: "Aussie at the campsite" },
   { src: personal9, alt: "Pup by the campfire" },
+  { src: personal1, alt: "With my partner in the backyard" },
+  { src: personal3, alt: "Platform 9¾ at King's Cross, London" },
+  { src: personal8, alt: "Aussie at the campsite" },
+  { src: personal6, alt: "Night fishing" },
+  { src: personal4, alt: "Date night out" },
 ];
 
 const PersonalLife = () => {

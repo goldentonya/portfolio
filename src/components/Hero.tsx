@@ -39,13 +39,6 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
 
-  const floatingVariants = {
-    animate: {
-      y: [0, -15, 0],
-      transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
-
   return (
     <section className="min-h-screen flex items-center relative pt-16 overflow-hidden">
       {/* Holographic grid backdrop */}
@@ -73,45 +66,30 @@ const Hero = () => {
         { Icon: Binary, left: "90%", top: "40%", size: 24, delay: 2.1 },
         { Icon: Zap, left: "50%", top: "88%", size: 22, delay: 1.6 },
       ].map(({ Icon, left, top, size, delay }, i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute -z-10 text-primary/25 drop-shadow-[0_0_8px_hsl(199_90%_55%/0.5)]"
-          style={{ left, top }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.15, 0.45, 0.15],
-            rotate: [0, 6, 0],
-          }}
-          transition={{
-            duration: 7 + (i % 4),
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay,
+          className="hero-float absolute -z-10 text-primary/25 drop-shadow-[0_0_8px_hsl(199_90%_55%/0.5)]"
+          style={{
+            left,
+            top,
+            ['--dur' as string]: `${7 + (i % 4)}s`,
+            animationDelay: `${delay}s`,
           }}
         >
           <Icon size={size} strokeWidth={1.5} />
-        </motion.div>
+        </div>
       ))}
 
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute w-0.5 h-0.5 rounded-full bg-primary/40"
+          className="hero-particle absolute w-0.5 h-0.5 rounded-full bg-primary/40"
           style={{
             left: `${10 + i * 12}%`,
             top: `${15 + (i % 4) * 22}%`,
-          }}
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.1, 0.7, 0.1],
-            scale: [1, 2, 1],
-          }}
-          transition={{
-            duration: 5 + i * 0.7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.6,
+            ['--dur' as string]: `${5 + i * 0.7}s`,
+            animationDelay: `${i * 0.6}s`,
           }}
         />
       ))}
@@ -145,10 +123,9 @@ const Hero = () => {
               className="text-lg md:text-xl text-primary leading-relaxed mb-4 max-w-2xl h-8"
             >
               <span>{displayText}</span>
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+              <span
                 className="inline-block w-0.5 h-5 bg-primary ml-1 align-middle shadow-[0_0_8px_hsl(199_90%_55%/0.6)]"
+                style={{ animation: "caret-blink 1s steps(1) infinite" }}
               />
             </motion.div>
 
@@ -183,17 +160,18 @@ const Hero = () => {
           </div>
 
           <motion.div
-            variants={floatingVariants}
-            animate="animate"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
+            style={{ animation: "hero-portrait-float 6s ease-in-out infinite" }}
           >
             <div className="relative rounded-xl overflow-hidden shadow-[0_0_40px_hsl(199_90%_55%/0.15)] border border-primary/20">
               <img
                 src={heroImage}
                 alt="Tonya Golden, Technical Performance Strategist"
+                loading="eager"
+                fetchPriority="high"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-primary/5" />
@@ -203,13 +181,12 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0], opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity }}
+      <div
+        className="absolute bottom-8 left-1/2"
+        style={{ animation: "hero-scroll-indicator 2s ease-in-out infinite" }}
       >
         <ArrowDown size={20} className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.5)]" />
-      </motion.div>
+      </div>
 
       {/* Glow effects */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl -z-10" />

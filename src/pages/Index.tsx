@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Below-the-fold sections are code-split so the initial mobile load is small.
 const About = lazy(() => import("@/components/About"));
@@ -12,7 +13,13 @@ const Certifications = lazy(() => import("@/components/Certifications"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 
-const SectionFallback = () => <div className="h-32" />;
+const SectionFallback = () => (
+  <div className="section-container section-padding space-y-4" aria-hidden="true">
+    <Skeleton className="h-4 w-36 bg-secondary/60" />
+    <Skeleton className="h-10 w-72 max-w-full bg-secondary/70" />
+    <Skeleton className="h-24 w-full bg-secondary/40" />
+  </div>
+);
 
 const Index = () => {
   return (
@@ -23,8 +30,8 @@ const Index = () => {
       <div className="relative z-10">
         <Navbar />
         <Hero />
+        <div className="lightsaber-divider" />
         <Suspense fallback={<SectionFallback />}>
-          <div className="lightsaber-divider" />
           <About />
           <div className="lightsaber-divider" />
           <PersonalLife />

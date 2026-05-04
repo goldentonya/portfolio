@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail, Code2, FlaskConical, BarChart3, LineChart, Database, GitBranch, Cpu, Zap, Binary, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/tonya-portrait.jpeg";
+import heroImage from "@/assets/tonya-portrait.webp";
 import { useEffect, useState } from "react";
 
 const roles = [

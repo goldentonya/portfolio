@@ -1,15 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import personal1 from "@/assets/personal-1.jpeg";
-import personal2 from "@/assets/personal-2.jpeg";
-import personal3 from "@/assets/personal-3.jpeg";
-import personal4 from "@/assets/personal-4.jpeg";
-import personal5 from "@/assets/personal-5.jpeg";
-import personal6 from "@/assets/personal-6.jpeg";
-import personal7 from "@/assets/personal-7.jpeg";
-import personal8 from "@/assets/personal-8.jpeg";
-import personal9 from "@/assets/personal-9.jpeg";
+import personal1 from "@/assets/personal-1.webp";
+import personal2 from "@/assets/personal-2.webp";
+import personal3 from "@/assets/personal-3.webp";
+import personal4 from "@/assets/personal-4.webp";
+import personal5 from "@/assets/personal-5.webp";
+import personal6 from "@/assets/personal-6.webp";
+import personal7 from "@/assets/personal-7.webp";
+import personal8 from "@/assets/personal-8.webp";
+import personal9 from "@/assets/personal-9.webp";
 
 const placeholderImages = [
   { src: personal5, alt: "Our pups in their Star Wars costumes" },

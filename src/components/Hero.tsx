@@ -13,10 +13,18 @@ const roles = [
 
 const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(roles[0]);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isCyclingRoles, setIsCyclingRoles] = useState(false);
 
   useEffect(() => {
+    const timeout = window.setTimeout(() => setIsCyclingRoles(true), 1800);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    if (!isCyclingRoles) return;
+
     const currentRole = roles[roleIndex];
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -37,7 +45,7 @@ const Hero = () => {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, roleIndex]);
+  }, [displayText, isDeleting, isCyclingRoles, roleIndex]);
 
   return (
     <section className="min-h-screen flex items-center relative pt-16 overflow-hidden">

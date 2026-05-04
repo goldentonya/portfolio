@@ -21,6 +21,10 @@ const SectionFallback = () => (
   </div>
 );
 
+const LazySection = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<SectionFallback />}>{children}</Suspense>
+);
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
@@ -31,22 +35,36 @@ const Index = () => {
         <Navbar />
         <Hero />
         <div className="lightsaber-divider" />
-        <Suspense fallback={<SectionFallback />}>
+        <LazySection>
           <About />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <PersonalLife />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <Skills />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <Experience />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <CaseStudies />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <Certifications />
-          <div className="lightsaber-divider" />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <Contact />
+        </LazySection>
+        <LazySection>
           <Footer />
-        </Suspense>
+        </LazySection>
       </div>
     </div>
   );

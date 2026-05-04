@@ -3,7 +3,6 @@ import { ArrowDown, Mail, Code2, FlaskConical, BarChart3, LineChart, Database, G
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/tonya-portrait.jpeg";
 import { useEffect, useState } from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const roles = [
   "Technical Performance Strategist",
@@ -16,7 +15,6 @@ const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -63,7 +61,7 @@ const Hero = () => {
       />
 
       {/* Floating tech icons (coding, experimentation, data) */}
-      {!isMobile && [
+      {[
         { Icon: Code2, left: "6%", top: "18%", size: 28, delay: 0 },
         { Icon: FlaskConical, left: "14%", top: "72%", size: 26, delay: 0.6 },
         { Icon: BarChart3, left: "22%", top: "30%", size: 30, delay: 1.2 },
@@ -96,7 +94,7 @@ const Hero = () => {
       ))}
 
       {/* Floating particles */}
-      {!isMobile && [...Array(8)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-0.5 h-0.5 rounded-full bg-primary/40"

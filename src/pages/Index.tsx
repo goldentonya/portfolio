@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -21,7 +21,7 @@ const SectionFallback = () => (
   </div>
 );
 
-const LazySection = ({ children }: { children: React.ReactNode }) => (
+const LazySection = ({ children }: { children: ReactNode }) => (
   <Suspense fallback={<SectionFallback />}>{children}</Suspense>
 );
 

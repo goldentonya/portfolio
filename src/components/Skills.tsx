@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Beaker, BarChart3, Code, Wrench } from "lucide-react";
+import { Beaker, BarChart3, Code, Wrench, Sparkles } from "lucide-react";
 
 const skillGroups = [
   {
@@ -22,6 +22,11 @@ const skillGroups = [
     icon: Wrench,
     title: "Tools",
     skills: ["Google Analytics", "Salesforce", "Datorama", "VWO", "Hotjar"],
+  },
+  {
+    icon: Sparkles,
+    title: "AI & Automation",
+    skills: ["ChatGPT", "Claude Code", "Lovable", "Manus"],
   },
 ];
 
@@ -56,7 +61,7 @@ const Skills = () => {
         </motion.div>
 
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

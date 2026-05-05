@@ -89,7 +89,7 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-muted-foreground leading-relaxed max-w-3xl"
         >
-          Results-driven professional with experience designing and executing A/B experiments to optimize product performance and improve KPIs. Skilled in analyzing data, identifying actionable insights, and presenting findings to stakeholders. Proven ability to translate complex data into strategies that improve conversion rates and business performance.
+          Results driven professional with experience designing and executing A/B experiments to optimize product performance and improve KPIs. Skilled in analyzing data, identifying actionable insights, and presenting findings to stakeholders. Proven ability to translate complex data into strategies that improve conversion rates and business performance.
         </motion.p>
 
         <div className="grid grid-cols-3 gap-6 mt-10">

@@ -58,10 +58,10 @@ const PersonalLife = () => {
               Outside of work, most of my time is spent with my amazing boyfriend and our two Australian Shepherds, who are absolutely our babies and keep life fun. We love staying active and being outdoors together, whether that's working out, heading to the beach, camping, or going fishing. I also enjoy winding down with video games when I get the chance.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Travel is a big passion of mine, and I'm always looking forward to the next trip. At the top of my bucket list is visiting Japan — a place I've wanted to experience for a long time.
+              Travel is a big passion of mine, and I'm always looking forward to the next trip. At the top of my bucket list is visiting Japan, a place I've wanted to experience for a long time.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              I'm also a big music fan and love going to concerts whenever I can. And I'm definitely a nerd at heart — I've always loved Star Wars, Pokémon, and anime like Bleach, Demon Slayer, Black Clover and many more.
+              I'm also a big music fan and love going to concerts whenever I can. And I'm definitely a nerd at heart. I've always loved Star Wars, Pokémon, and anime like Bleach, Demon Slayer, Black Clover and many more.
             </p>
           </motion.div>
 

@@ -9,6 +9,7 @@ const PersonalLife = lazy(() => import("@/components/PersonalLife"));
 const Skills = lazy(() => import("@/components/Skills"));
 const Experience = lazy(() => import("@/components/Experience"));
 const CaseStudies = lazy(() => import("@/components/CaseStudies"));
+const Holobuilds = lazy(() => import("@/components/Holobuilds"));
 const Certifications = lazy(() => import("@/components/Certifications"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -53,6 +54,10 @@ const Index = () => {
         <div className="lightsaber-divider" />
         <LazySection>
           <CaseStudies />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
+          <Holobuilds />
         </LazySection>
         <div className="lightsaber-divider" />
         <LazySection>

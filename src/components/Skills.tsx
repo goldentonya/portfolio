@@ -1,8 +1,18 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Beaker, BarChart3, Code, Wrench, Sparkles } from "lucide-react";
+import { Palette, Code2, Beaker, BarChart3, Wrench, Sparkles } from "lucide-react";
 
 const skillGroups = [
+  {
+    icon: Palette,
+    title: "UI/UX Design",
+    skills: ["UI Design", "Visual Design", "Design Systems", "Wireframing", "User Flows", "Prototyping", "Figma", "Usability Testing"],
+  },
+  {
+    icon: Code2,
+    title: "Front-End Development",
+    skills: ["React", "TypeScript", "JavaScript (ES6+)", "HTML & CSS", "Tailwind CSS", "Responsive Design", "Vite", "Git", "WordPress"],
+  },
   {
     icon: Beaker,
     title: "Product & Growth",
@@ -12,11 +22,6 @@ const skillGroups = [
     icon: BarChart3,
     title: "Analytics",
     skills: ["Data Analysis", "KPI Tracking", "Dashboarding"],
-  },
-  {
-    icon: Code,
-    title: "Technical",
-    skills: ["HTML", "CSS", "JavaScript", "WordPress"],
   },
   {
     icon: Wrench,
@@ -61,7 +66,7 @@ const Skills = () => {
         </motion.div>
 
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

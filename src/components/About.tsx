@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useCountUp } from "@/hooks/useCountUp";
-import { MapPin, Briefcase, TrendingUp } from "lucide-react";
+import { Palette, Code2, TrendingUp } from "lucide-react";
 
 const StatCard = ({ label, value, suffix = "", isYear = false, delay, isInView }: { label: string; value: number; suffix?: string; isYear?: boolean; delay: number; isInView: boolean }) => {
   const count = useCountUp(value, isYear ? 1 : 2000, isInView);
@@ -22,19 +22,19 @@ const StatCard = ({ label, value, suffix = "", isYear = false, delay, isInView }
 
 const cardData = [
   {
-    icon: Briefcase,
-    title: "From Code to Strategy",
-    desc: "Started in web development, evolved through CRO and marketing leadership into a technical performance strategist who understands the full stack of growth.",
+    icon: Palette,
+    title: "Where It Started: Design",
+    desc: "My path began in design, learning how to think about layout, color, and user experience long before I ever wrote a line of code.",
+  },
+  {
+    icon: Code2,
+    title: "Self-Taught in Front-End Dev",
+    desc: "I taught myself front-end development so I could build the things I was designing, and it grew into a genuine love for writing code.",
   },
   {
     icon: TrendingUp,
-    title: "Cross-Functional Impact",
-    desc: "Partner with product, engineering, and marketing teams to design experiments that drive measurable business outcomes.",
-  },
-  {
-    icon: MapPin,
-    title: "Technical × Business × Data",
-    desc: "Unique ability to translate complex data into clear strategies that improve conversion rates, user experience, and bottom-line performance.",
+    title: "Into CRO & Data Analysis",
+    desc: "That path led me into conversion rate optimization and A/B testing, where I became fluent in data analysis and using real user behavior to guide decisions.",
   },
 ];
 
@@ -54,7 +54,7 @@ const About = () => {
             ✦ The Backstory ✦
           </p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 tracking-wide">
-            Bridging data, product, and growth
+            A path from design, to code, to data
           </h2>
         </motion.div>
 
@@ -89,13 +89,13 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-muted-foreground leading-relaxed max-w-3xl"
         >
-          Results driven professional with experience designing and executing A/B experiments to optimize product performance and improve KPIs. Skilled in analyzing data, identifying actionable insights, and presenting findings to stakeholders. Proven ability to translate complex data into strategies that improve conversion rates and business performance.
+          I started out in design, learning how to craft interfaces that felt intuitive and looked great. From there I taught myself front-end development so I could build the things I was designing, and it quickly grew into a genuine love for writing code. That love led me to start college and graduate with an Associate's Degree in Computer Science. From there I began my career doing front-end development work. Eventually I was moved into a CRO specialist role at my current company, where I became familiar with data analysis, experiment design, and using real user behavior to inform every decision. Today I bring all three together, design, development, and data, to build interfaces that are as intuitive as they are effective.
         </motion.p>
 
         <div className="grid grid-cols-3 gap-6 mt-10">
           <StatCard label="Established in" value={2018} isYear delay={0.7} isInView={isInView} />
           <StatCard label="Experiments Ran" value={100} suffix="+" delay={0.85} isInView={isInView} />
-          <StatCard label="Websites Optimized" value={10} suffix="+" delay={1.0} isInView={isInView} />
+          <StatCard label="Interfaces Built" value={10} suffix="+" delay={1.0} isInView={isInView} />
         </div>
       </div>
     </section>

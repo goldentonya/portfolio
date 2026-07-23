@@ -5,10 +5,10 @@ import heroImage from "@/assets/tonya-portrait.webp";
 import { useEffect, useState } from "react";
 
 const roles = [
-  "Technical Performance Strategist",
-  "Growth & Experimentation Lead",
-  "Conversion Optimization Expert",
-  "Data-Driven Decision Maker",
+  "Front-End Developer",
+  "UI/UX Designer",
+  "Creative Technologist",
+  "Conversion-Focused Designer",
 ];
 
 const Hero = () => {
@@ -111,7 +111,7 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
             >
               <p className="text-xs font-display font-medium tracking-[0.3em] uppercase text-primary mb-4">
-                ✦ Growth & Experimentation ✦
+                ✦ Design & Front-End Development ✦
               </p>
             </motion.div>
 
@@ -143,7 +143,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl"
             >
-              I help companies improve conversion, optimize user journeys, and make smarter product decisions through experimentation. The Force of data guides every decision.
+              I design and build responsive, high-converting web interfaces, pairing clean front-end code with user-centered UX. Backed by years in experimentation and Conversion Rate Optimization (CRO), every design decision is as data-informed as it is beautiful. The Force of data guides every pixel.
             </motion.p>
 
             <motion.div
@@ -177,7 +177,7 @@ const Hero = () => {
             <div className="relative rounded-xl overflow-hidden shadow-[0_0_40px_hsl(199_90%_55%/0.15)] border border-primary/20">
               <img
                 src={heroImage}
-                alt="Tonya Golden, Technical Performance Strategist"
+                alt="Tonya Golden, Front-End Developer & UI/UX Designer"
                 loading="eager"
                 fetchPriority="high"
                 className="w-full h-auto object-cover"

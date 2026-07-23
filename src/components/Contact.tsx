@@ -66,7 +66,7 @@ const Contact = () => {
               Let's connect
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Open to opportunities in product, growth, and experimentation roles. Let's discuss how I can help your team make smarter, data-driven decisions.
+              Open to opportunities in front-end development, UI/UX design, and product, growth, and experimentation roles. Let's discuss how I can help your team build great experiences and make smarter, data-driven decisions.
             </p>
           </div>
 

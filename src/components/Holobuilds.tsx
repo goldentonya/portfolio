@@ -27,7 +27,7 @@ const Holobuilds = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {holobuilds.map((b, i) => (
             <motion.div
               key={b.slug}
@@ -51,10 +51,18 @@ const Holobuilds = () => {
                   />
                 </div>
 
-                <div className="relative h-40 mb-5 rounded-lg border border-primary/20 bg-gradient-to-br from-primary/10 via-background/40 to-transparent overflow-hidden flex items-center justify-center">
-                  <span className="font-display text-xs tracking-[0.3em] uppercase text-primary/60">
-                    Preview soon
-                  </span>
+                <div className="relative h-64 sm:h-72 mb-5 rounded-lg border border-primary/20 bg-gradient-to-br from-primary/10 via-background/40 to-transparent overflow-hidden flex items-center justify-center">
+                  {b.images[0] ? (
+                    <img
+                      src={b.images[0].src}
+                      alt={b.title}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="font-display text-xs tracking-[0.3em] uppercase text-primary/60">
+                      Preview soon
+                    </span>
+                  )}
                   <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_0%,transparent_calc(100%_-_1px),hsl(199_90%_55%/0.08)_100%)] bg-[length:100%_8px]" />
                 </div>
 

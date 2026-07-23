@@ -29,7 +29,7 @@ const PersonalLife = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="personal" className="section-padding bg-surface/60" ref={ref}>
+    <section id="about" className="section-padding bg-surface/60" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

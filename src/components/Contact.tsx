@@ -35,7 +35,7 @@ const Contact = () => {
       });
       const data = await res.json();
       if (data.success) {
-        toast({ title: "Transmission sent", description: "Thanks for reaching out — I'll be in touch soon." });
+        toast({ title: "Transmission sent", description: "Thanks for reaching out. I'll be in touch soon." });
         setForm({ name: "", email: "", subject: "", message: "" });
       } else {
         toast({ title: "Something went wrong", description: data.message || "Please try again.", variant: "destructive" });

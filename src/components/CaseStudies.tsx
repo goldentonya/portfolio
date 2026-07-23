@@ -41,7 +41,7 @@ const cases: Case[] = [
     action:
       "Ran an A/B test on the primary CTA, swapping the red button for an orange variant while keeping copy and placement identical.",
     result:
-      "The orange variant outperformed the red control, lifting click rate from 43.61% to 44.26% — a small change with meaningful downstream impact at scale.",
+      "The orange variant outperformed the red control, lifting click rate from 43.61% to 44.26%, a small change with meaningful downstream impact at scale.",
     metricNum: 44.26,
     metricPrefix: "",
     metricSuffix: "%",
@@ -60,7 +60,7 @@ const cases: Case[] = [
     problem:
       "After a Thank You Video boosted performance in our Medicare flow, we wanted to validate the same play in our Life Insurance funnel to drive higher lead-to-policy conversion.",
     action:
-      "Tested two Thank You Video variations on the LifeCompared confirmation page — one AI-generated and one featuring our director on camera — measuring downstream lead-to-policy.",
+      "Tested two Thank You Video variations on the LifeCompared confirmation page (one AI-generated and one featuring our director on camera), measuring downstream lead-to-policy.",
     result:
       "The director-led video won, lifting lead-to-policy from 5.8% to 6.9% and confirming that authentic, human-led video outperformed the AI alternative.",
     metricNum: 6.9,
@@ -76,7 +76,7 @@ const cases: Case[] = [
     tag: "Form UX",
     title: "Move Email Field",
     problem:
-      "Analytics showed a heavy drop-off on the final step where users were asked for name, phone, and email all at once — it felt like handing over everything in a single ask.",
+      "Analytics showed a heavy drop-off on the final step where users were asked for name, phone, and email all at once; it felt like handing over everything in a single ask.",
     action:
       "Restructured the form by moving the email field to an earlier step, separating it from the phone field so the contact ask felt more progressive and less invasive.",
     result:
@@ -97,7 +97,7 @@ const cases: Case[] = [
     tag: "Video Engagement",
     title: "Medicare Thank You Video Thumbnails",
     problem:
-      "After launching the Medicare Thank You Video, watch rates were lower than expected — the default thumbnail wasn't compelling enough to pull users into the video.",
+      "After launching the Medicare Thank You Video, watch rates were lower than expected; the default thumbnail wasn't compelling enough to pull users into the video.",
     action:
       "Designed and tested 3 new high-contrast thumbnail variations against the original, optimizing for visual interrupt and click-to-play intent.",
     result:

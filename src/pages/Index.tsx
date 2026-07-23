@@ -1,4 +1,5 @@
-import { lazy, Suspense, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -27,6 +28,28 @@ const LazySection = ({ children }: { children: ReactNode }) => (
 );
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    let attempts = 0;
+    let frame: number;
+
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else if (attempts < 50) {
+        attempts++;
+        frame = requestAnimationFrame(tryScroll);
+      }
+    };
+
+    tryScroll();
+    return () => cancelAnimationFrame(frame);
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-background relative">
       {/* Starfield background */}
@@ -41,10 +64,6 @@ const Index = () => {
         </LazySection>
         <div className="lightsaber-divider" />
         <LazySection>
-          <PersonalLife />
-        </LazySection>
-        <div className="lightsaber-divider" />
-        <LazySection>
           <Skills />
         </LazySection>
         <div className="lightsaber-divider" />
@@ -53,11 +72,15 @@ const Index = () => {
         </LazySection>
         <div className="lightsaber-divider" />
         <LazySection>
+          <Holobuilds />
+        </LazySection>
+        <div className="lightsaber-divider" />
+        <LazySection>
           <CaseStudies />
         </LazySection>
         <div className="lightsaber-divider" />
         <LazySection>
-          <Holobuilds />
+          <PersonalLife />
         </LazySection>
         <div className="lightsaber-divider" />
         <LazySection>

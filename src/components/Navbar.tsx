@@ -1,26 +1,35 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.svg";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "My Story", href: "#my-story" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Case Studies", href: "#case-studies" },
   { label: "Holobuilds", href: "#holobuilds" },
+  { label: "Case Studies", href: "#case-studies" },
+  { label: "About", href: "#about" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const goToSection = (hash: string) => {
+    navigate(`/${hash}`);
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
@@ -35,8 +44,12 @@ const Navbar = () => {
     >
       <div className="section-container flex items-center justify-between h-24">
         <motion.a
-          href="#"
-          className="flex items-center drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/");
+          }}
+          className="flex items-center shrink-0 drop-shadow-[0_0_8px_hsl(199_90%_55%/0.4)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Tonya Golden"
@@ -44,15 +57,19 @@ const Navbar = () => {
           <img src={logo} alt="Tonya Golden logo" className="h-16 w-auto object-contain" />
         </motion.a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((link, i) => (
             <motion.a
               key={link.href}
-              href={link.href}
+              href={`/${link.href}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(link.href);
+              }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 * i }}
-              className="text-xs font-display font-medium tracking-wider text-muted-foreground hover:text-primary transition-colors relative group uppercase"
+              className="text-xs font-display font-medium tracking-wider text-muted-foreground hover:text-primary transition-colors relative group uppercase whitespace-nowrap"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
@@ -61,7 +78,7 @@ const Navbar = () => {
         </div>
 
         <motion.button
-          className="md:hidden text-foreground"
+          className="lg:hidden text-foreground shrink-0"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
           whileTap={{ scale: 0.9 }}
@@ -76,18 +93,21 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-md border-b border-primary/10 overflow-hidden"
+            className="lg:hidden bg-background/95 backdrop-blur-md border-b border-primary/10 overflow-hidden"
           >
             <div className="section-container py-4 flex flex-col gap-4">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
                   className="text-xs font-display font-medium tracking-wider text-muted-foreground hover:text-primary transition-colors uppercase"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goToSection(link.href);
+                  }}
                 >
                   {link.label}
                 </motion.a>

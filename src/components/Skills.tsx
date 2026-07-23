@@ -6,12 +6,12 @@ const skillGroups = [
   {
     icon: Palette,
     title: "UI/UX Design",
-    skills: ["UI Design", "Visual Design", "Design Systems", "Wireframing", "User Flows", "Prototyping", "Figma", "Usability Testing"],
+    skills: ["UI Design", "Visual Design", "Design Systems", "Wireframing", "User Flows", "Prototyping", "Usability Testing"],
   },
   {
     icon: Code2,
     title: "Front-End Development",
-    skills: ["React", "TypeScript", "JavaScript (ES6+)", "HTML & CSS", "Tailwind CSS", "Responsive Design", "Vite", "Git", "WordPress"],
+    skills: ["React", "TypeScript", "JavaScript (ES6+)", "HTML & CSS", "Tailwind CSS", "Responsive Design"],
   },
   {
     icon: Beaker,
@@ -21,17 +21,17 @@ const skillGroups = [
   {
     icon: BarChart3,
     title: "Analytics",
-    skills: ["Data Analysis", "KPI Tracking", "Dashboarding"],
+    skills: ["Data Analysis", "KPI Tracking", "Dashboarding", "Cohort Analysis", "Attribution Modeling", "Segmentation", "Statistical Significance Testing"],
   },
   {
     icon: Wrench,
     title: "Tools",
-    skills: ["Google Analytics", "Salesforce", "Datorama", "VWO", "Hotjar"],
+    skills: ["Figma", "Git", "Vite", "WordPress", "Google Analytics", "Salesforce", "Datorama", "VWO", "Hotjar", "VS Code", "PostHog"],
   },
   {
     icon: Sparkles,
     title: "AI & Automation",
-    skills: ["ChatGPT", "Claude Code", "Lovable", "Manus"],
+    skills: ["ChatGPT", "Claude Code", "Claude Design", "Lovable", "Manus"],
   },
 ];
 
@@ -72,25 +72,33 @@ const Skills = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {skillGroups.map((group) => (
-            <motion.div key={group.title} variants={itemVariants} className="group">
-              <group.icon size={20} className="text-primary mb-4 drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
-              <h3 className="font-display font-semibold text-foreground mb-4 text-sm tracking-wide">
-                {group.title}
-              </h3>
-              <ul className="space-y-2">
+            <motion.div
+              key={group.title}
+              variants={itemVariants}
+              whileHover={{ y: -4, boxShadow: "0 0 30px hsl(199 90% 55% / 0.12)", borderColor: "hsl(199 90% 55% / 0.4)" }}
+              className="holo-card group rounded-xl bg-surface-elevated border border-divider p-6 transition-all duration-300 flex flex-col"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <span className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+                  <group.icon size={20} className="text-primary drop-shadow-[0_0_6px_hsl(199_90%_55%/0.4)]" />
+                </span>
+                <h3 className="font-display font-semibold text-foreground text-sm tracking-wide">
+                  {group.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill, si) => (
-                  <motion.li
+                  <motion.span
                     key={skill}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: 0.5 + si * 0.08 }}
-                    className="text-sm text-muted-foreground flex items-center gap-2 group-hover:text-foreground transition-colors duration-300"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 0.4 + si * 0.05 }}
+                    className="px-2.5 py-1 rounded-md text-xs bg-primary/10 border border-primary/20 text-primary/90 group-hover:border-primary/40 group-hover:text-primary transition-colors duration-300"
                   >
-                    <span className="w-1 h-1 rounded-full bg-primary shrink-0 shadow-[0_0_4px_hsl(199_90%_55%/0.6)]" />
                     {skill}
-                  </motion.li>
+                  </motion.span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </motion.div>
